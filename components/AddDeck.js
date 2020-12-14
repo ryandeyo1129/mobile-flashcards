@@ -15,6 +15,7 @@ export class AddDeck extends Component {
     saveDeck(title)
       .then(data => {
         dispatch(addDeck(data));
+        this.setState({ title: '' })
         navigation.navigate('Deck', {
           title: title,
           cards: 0
@@ -28,19 +29,41 @@ export class AddDeck extends Component {
     const { title } = this.state
     return (
       <View>
-        <Text>Add Title</Text>
         <TextInput
-          placeholder='Add Title'
+          placeholder='Enter Deck Title'
           onChangeText={this.changeText}
           value={title}
+          style={styles.createDeckForm}
         />
-        <TouchableOpacity disabled={title === ''} onPress={this.submit}>
+        <TouchableOpacity disabled={title === ''} onPress={this.submit} style={styles.createDeckBtn}>
           <Text>Create Deck</Text>
         </TouchableOpacity>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  createDeckBtn: {
+    backgroundColor: 333333,
+    height: 45,
+    borderRadius: 5,
+    fontSize: 40,
+    marginLeft: 30,
+    marginRight: 30,
+    marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  createDeckForm: {
+    height: 45,
+    borderRadius: 5,
+    fontSize: 30,
+    marginLeft: 30,
+    marginRight: 30,
+    marginTop: 80,
+  }
+})
 
 function mapStateToProps (state) {
   return state

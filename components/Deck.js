@@ -25,20 +25,44 @@ export function Deck ({ route, navigation, decks, dispatch }) {
   }
   return (
     <View>
-      <Text>{deck.title}</Text>
-      <Text>{deck.cards.length} cards</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('AddCard', deck)}>
+      <Text style={styles.title}>{deck.title}</Text>
+      <Text style={styles.cards}>{deck.cards.length} CARDS</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Add Card', deck)} style={styles.optionBtn}>
         <Text>Add Card</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Quiz', deck)}>
+      <TouchableOpacity onPress={() => navigation.navigate('Quiz', deck)} style={styles.optionBtn}>
         <Text>Start Quiz</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={removeAndNavigate}>
+      <TouchableOpacity onPress={removeAndNavigate} style={styles.optionBtn}>
         <Text>Delete Deck</Text>
       </TouchableOpacity>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 30,
+    marginLeft: 30,
+    marginTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cards: {
+    marginLeft: 30
+  },
+  optionBtn: {
+    backgroundColor: 333333,
+    height: 45,
+    borderRadius: 5,
+    fontSize: 40,
+    marginLeft: 30,
+    marginRight: 30,
+    marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})
 
 const mapStateToProps = (state) => {
   return { decks: state };

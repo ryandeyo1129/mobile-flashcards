@@ -28,25 +28,50 @@ export class AddCard extends Component {
   render() {
     const { question, answer } = this.state
     return (
-      <View>
-        <Text>Add Card</Text>
+      <View style={styles.container}>
         <TextInput
           placeholder='Question'
           onChangeText={this.changeText1}
           value={question}
+          style={styles.addCardForm}
         />
         <TextInput
           placeholder='Answer'
           onChangeText={this.changeText2}
           value={answer}
+          style={styles.addCardForm}
         />
-        <TouchableOpacity disabled={question === '' || answer === ''} onPress={this.submit}>
+        <TouchableOpacity disabled={question === '' || answer === ''} onPress={this.submit} style={styles.addBtn}>
           <Text>Add Card</Text>
         </TouchableOpacity>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 80,
+  },
+  addBtn: {
+    backgroundColor: 333333,
+    height: 45,
+    borderRadius: 5,
+    fontSize: 40,
+    marginLeft: 30,
+    marginRight: 30,
+    marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  addCardForm: {
+    height: 45,
+    borderRadius: 5,
+    fontSize: 30,
+    marginLeft: 30,
+    marginRight: 30,
+  }
+})
 
 function mapStateToProps (state) {
   return {

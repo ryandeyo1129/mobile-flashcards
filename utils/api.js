@@ -8,7 +8,6 @@ export function saveCard (question, answer, title) {
     answer: answer,
     title: title
   }
-  console.log('decks!!!!!!!!!!!!!!!!')
 
   AsyncStorage.getItem(DECK_STORAGE_KEY)
     .then(storage => {

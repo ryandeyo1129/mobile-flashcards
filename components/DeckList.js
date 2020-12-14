@@ -29,11 +29,15 @@ export class DeckList extends Component {
     const { decks } = this.props;
     return (
       <View>
-        <Text>deck list</Text>
         {Object.keys(decks).map((deckTitle, id) => {
           return (
-            <TouchableOpacity key={id} onPress={() => this.deckNav(decks, deckTitle)}>
-              <Text>{deckTitle} {decks[deckTitle].cards.length}</Text>
+            <TouchableOpacity
+              key={id}
+              style={styles.deckBtn}
+              onPress={() => this.deckNav(decks, deckTitle)}
+            >
+              <Text >{deckTitle}</Text>
+              <Text>{decks[deckTitle].cards.length} CARDS</Text>
             </TouchableOpacity>
           )
         })}
@@ -41,6 +45,20 @@ export class DeckList extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  deckBtn: {
+    backgroundColor: 333333,
+    height: 80,
+    borderRadius: 5,
+    fontSize: 40,
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})
 
 const mapStateToProps = (state) => {
   return { decks: state };
