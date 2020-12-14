@@ -7,7 +7,6 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
 import middleware from './middleware';
-import { setLocalNotifications } from './utils/helpers';
 import { Ionicons } from '@expo/vector-icons'
 
 import DeckList from './components/DeckList';
@@ -49,9 +48,6 @@ class Home extends Component {
 }
 
 export default class App extends Component {
-  componentDidMount() {
-    setLocalNotifications()
-  }
   render() {
     return (
       <Provider store={store}>

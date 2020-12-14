@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import { setLocalNotifications, clearLocalNotifications } from '../utils/helpers';
 
 export class Quiz extends Component {
   state = {
@@ -59,7 +60,7 @@ export class Quiz extends Component {
     if (this.state.currentCardCount < deck.cards.length) {
       return (
         <View>
-          <Text style={styles.questionTitle}>Question:</Text>
+          <Text style={styles.questionTitle}>Question {this.state.currentCardCount + 1} / {deck.cards.length}:</Text>
           <Text style={styles.question}>{deck.cards[this.state.currentCardCount].question}</Text>
           {!this.state.showAnswer
             ? <TouchableOpacity onPress={() => this.setState({ showAnswer: true })} style={[styles.btn, styles.optionColor]}>
@@ -76,6 +77,7 @@ export class Quiz extends Component {
         </View>
       )
     }
+    clearLocalNotifications().then(setLocalNotifications())
     return (
       <View style={styles.container}>
         <Text style={styles.answer}>Final Score: {this.state.correctCount} / {this.state.totalCount}</Text>
