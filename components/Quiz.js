@@ -77,7 +77,7 @@ export class Quiz extends Component {
         </View>
       )
     }
-    clearLocalNotifications().then(setLocalNotifications())
+    clearLocalNotifications().then(setLocalNotifications)
     return (
       <View style={styles.container}>
         <Text style={styles.answer}>Final Score: {this.state.correctCount} / {this.state.totalCount}</Text>
